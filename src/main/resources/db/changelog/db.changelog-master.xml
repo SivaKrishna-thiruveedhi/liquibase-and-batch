@@ -1,779 +1,956 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog 	xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
-					xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
-					xmlns:pro="http://www.liquibase.org/xml/ns/pro" 
-					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-					xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
 										http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
 										http://www.liquibase.org/xml/ns/pro 
 										http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd 
 										http://www.liquibase.org/xml/ns/dbchangelog 
 										http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
-										
-										
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-1">
-        <createTable tableName="address">
-            <column autoIncrement="true" name="addressId" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="street" type="VARCHAR(45)"/>
-            <column name="employeeId" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-2">
-        <createTable tableName="capital">
-            <column autoIncrement="true" name="capital_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="capital_name" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-3">
-        <createTable tableName="city">
-            <column autoIncrement="true" name="city_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="city_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="population" type="INT"/>
-            <column name="distict_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-4">
-        <createTable tableName="complaint_box">
-            <column autoIncrement="true" name="serial_no" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(45)"/>
-            <column name="email" type="VARCHAR(45)"/>
-            <column name="phone_no" type="VARCHAR(45)"/>
-            <column name="complaint" type="VARCHAR(2000)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-5">
-        <createTable tableName="customer">
-            <column autoIncrement="true" name="customerid" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="customername" type="VARCHAR(45)"/>
-            <column name="customerEmail" type="VARCHAR(45)"/>
-            <column name="status" type="INT"/>
-            <column name="createdBy" type="VARCHAR(45)"/>
-            <column name="modifiedTime" type="VARCHAR(45)"/>
-            <column name="modifiedBy" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-6">
-        <createTable tableName="distict">
-            <column autoIncrement="true" name="distict_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="distict_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="population" type="INT"/>
-            <column name="area" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-7">
-        <createTable tableName="employees">
-            <column autoIncrement="true" name="employeeId" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="firstName" type="VARCHAR(45)"/>
-            <column name="lastName" type="VARCHAR(45)"/>
-            <column name="salary" type="DECIMAL(10)"/>
-            <column name="addressId" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-8">
-        <createTable tableName="language">
-            <column autoIncrement="true" name="lang_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="lang_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-9">
-        <createTable tableName="state">
-            <column autoIncrement="true" name="state_Id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="state_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="region" type="VARCHAR(255)"/>
-            <column name="area" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="capital_id" type="INT"/>
-            <column name="formation_date" type="date"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-10">
-        <createTable tableName="state_language">
-            <column autoIncrement="true" name="sl_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="lang_id" type="INT"/>
-            <column name="state_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-11">
-        <createTable tableName="ticket_booking">
-            <column autoIncrement="true" name="orderid" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="iduser" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="train_no" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="train_name" type="VARCHAR(45)"/>
-            <column name="time" type="VARCHAR(50)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-12">
-        <createTable tableName="train_details">
-            <column autoIncrement="true" name="train_no" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="train_name" type="VARCHAR(45)"/>
-            <column name="ss_code" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="es_code" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="bording_time" type="VARCHAR(45)"/>
-            <column name="destination_time" type="VARCHAR(45)"/>
-            <column name="avg_speed" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-13">
-        <createTable tableName="train_region">
-            <column name="ss_code" type="INT">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
-            </column>
-            <column name="station_name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-14">
-        <createTable tableName="user">
-            <column autoIncrement="true" name="iduser" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="VARCHAR(50)">
-                <constraints unique="true"/>
-            </column>
-            <column name="password" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-15">
-        <createTable tableName="village">
-            <column autoIncrement="true" name="village_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="population" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="village_name" type="VARCHAR(255)"/>
-            <column name="zip_id" type="INT"/>
-            <column name="status" type="INT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-16">
-        <createTable tableName="zipcode">
-            <column autoIncrement="true" name="zip_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="zipcode" type="INT"/>
-            <column name="village_village_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-17">
-        <createIndex indexName="FK326k80w3b7uqj6yu7gvcagrgn" tableName="village">
-            <column name="zip_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-18">
-        <createIndex indexName="FK945gnvikjlcracd3pqnnliih" tableName="zipcode">
-            <column name="village_village_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-19">
-        <createIndex indexName="capital_id_idx" tableName="state">
-            <column name="capital_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-20">
-        <createIndex indexName="distict_id_idx" tableName="city">
-            <column name="distict_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-21">
-        <createIndex indexName="lang_id_idx" tableName="state_language">
-            <column name="lang_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-22">
-        <createIndex indexName="stateId_idx" tableName="distict">
-            <column name="state_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-23">
-        <createIndex indexName="state_id_idx" tableName="state_language">
-            <column name="state_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-24">
-        <addForeignKeyConstraint baseColumnNames="zip_id" baseTableName="village" constraintName="FK326k80w3b7uqj6yu7gvcagrgn" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="zip_id" referencedTableName="zipcode" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-25">
-        <addForeignKeyConstraint baseColumnNames="village_village_id" baseTableName="zipcode" constraintName="FK945gnvikjlcracd3pqnnliih" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="village_id" referencedTableName="village" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-26">
-        <addForeignKeyConstraint baseColumnNames="capital_id" baseTableName="state" constraintName="capital_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="capital_id" referencedTableName="capital" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-27">
-        <addForeignKeyConstraint baseColumnNames="distict_id" baseTableName="city" constraintName="distict_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="distict_id" referencedTableName="distict" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687174238788-28">
-        <addForeignKeyConstraint baseColumnNames="state_id" baseTableName="distict" constraintName="state_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="state_Id" referencedTableName="state" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-1">
-        <createTable tableName="capital">
-            <column autoIncrement="true" name="capital_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="capital_name" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-2">
-        <createTable tableName="city">
-            <column autoIncrement="true" name="city_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="city_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="population" type="INT"/>
-            <column name="distict_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-3">
-        <createTable tableName="complaint_box">
-            <column autoIncrement="true" name="serial_no" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(45)"/>
-            <column name="email" type="VARCHAR(45)"/>
-            <column name="phone_no" type="VARCHAR(45)"/>
-            <column name="complaint" type="VARCHAR(2000)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-4">
-        <createTable tableName="customer">
-            <column autoIncrement="true" name="customerid" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="customername" type="VARCHAR(45)"/>
-            <column name="customerEmail" type="VARCHAR(45)"/>
-            <column name="status" type="INT"/>
-            <column name="createdBy" type="VARCHAR(45)"/>
-            <column name="modifiedTime" type="VARCHAR(45)"/>
-            <column name="modifiedBy" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-5">
-        <createTable tableName="distict">
-            <column autoIncrement="true" name="distict_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="distict_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="population" type="INT"/>
-            <column name="area" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-6">
-        <createTable tableName="employees">
-            <column autoIncrement="true" name="employeeId" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="firstName" type="VARCHAR(45)"/>
-            <column name="lastName" type="VARCHAR(45)"/>
-            <column name="salary" type="DECIMAL(10)"/>
-            <column name="addressId" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-7">
-        <createTable tableName="language">
-            <column autoIncrement="true" name="lang_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="lang_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-8">
-        <createTable tableName="sports">
-            <column name="id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(50)"/>
-            <column name="number_of_teams" type="INT"/>
-            <column name="number_of_players_per_team" type="INT"/>
-            <column name="total_number_of_players" type="INT"/>
-            <column name="status" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-9">
-        <createTable tableName="state">
-            <column autoIncrement="true" name="state_Id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="state_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="region" type="VARCHAR(255)"/>
-            <column name="area" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="capital_id" type="INT"/>
-            <column name="formation_date" type="date"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-10">
-        <createTable tableName="state_language">
-            <column autoIncrement="true" name="sl_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="lang_id" type="INT"/>
-            <column name="state_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-11">
-        <createTable tableName="ticket_booking">
-            <column autoIncrement="true" name="orderid" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="iduser" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="train_no" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="train_name" type="VARCHAR(45)"/>
-            <column name="time" type="VARCHAR(50)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-12">
-        <createTable tableName="train_details">
-            <column autoIncrement="true" name="train_no" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="train_name" type="VARCHAR(45)"/>
-            <column name="ss_code" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="es_code" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="bording_time" type="VARCHAR(45)"/>
-            <column name="destination_time" type="VARCHAR(45)"/>
-            <column name="avg_speed" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-13">
-        <createTable tableName="train_region">
-            <column name="ss_code" type="INT">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
-            </column>
-            <column name="station_name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-14">
-        <createTable tableName="user">
-            <column autoIncrement="true" name="iduser" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="VARCHAR(50)">
-                <constraints unique="true"/>
-            </column>
-            <column name="password" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-15">
-        <createTable tableName="useraddress">
-            <column autoIncrement="true" name="addressId" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="street" type="VARCHAR(45)"/>
-            <column name="employeeId" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-16">
-        <createTable tableName="village">
-            <column autoIncrement="true" name="village_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="population" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="village_name" type="VARCHAR(255)"/>
-            <column name="zip_id" type="INT"/>
-            <column name="status" type="INT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-17">
-        <createTable tableName="zipcode">
-            <column autoIncrement="true" name="zip_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="zipcode" type="INT"/>
-            <column name="village_village_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-18">
-        <createIndex indexName="FK326k80w3b7uqj6yu7gvcagrgn" tableName="village">
-            <column name="zip_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-19">
-        <createIndex indexName="FK945gnvikjlcracd3pqnnliih" tableName="zipcode">
-            <column name="village_village_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-20">
-        <createIndex indexName="capital_id_idx" tableName="state">
-            <column name="capital_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-21">
-        <createIndex indexName="distict_id_idx" tableName="city">
-            <column name="distict_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-22">
-        <createIndex indexName="lang_id_idx" tableName="state_language">
-            <column name="lang_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-23">
-        <createIndex indexName="stateId_idx" tableName="distict">
-            <column name="state_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-24">
-        <createIndex indexName="state_id_idx" tableName="state_language">
-            <column name="state_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-25">
-        <addForeignKeyConstraint baseColumnNames="zip_id" baseTableName="village" constraintName="FK326k80w3b7uqj6yu7gvcagrgn" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="zip_id" referencedTableName="zipcode" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-26">
-        <addForeignKeyConstraint baseColumnNames="village_village_id" baseTableName="zipcode" constraintName="FK945gnvikjlcracd3pqnnliih" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="village_id" referencedTableName="village" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-27">
-        <addForeignKeyConstraint baseColumnNames="capital_id" baseTableName="state" constraintName="capital_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="capital_id" referencedTableName="capital" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-28">
-        <addForeignKeyConstraint baseColumnNames="distict_id" baseTableName="city" constraintName="distict_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="distict_id" referencedTableName="distict" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687179038239-29">
-        <addForeignKeyConstraint baseColumnNames="state_id" baseTableName="distict" constraintName="state_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="state_Id" referencedTableName="state" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-1">
-        <createTable tableName="capital">
-            <column autoIncrement="true" name="capital_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="capital_name" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-2">
-        <createTable tableName="city">
-            <column autoIncrement="true" name="city_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="city_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="population" type="INT"/>
-            <column name="distict_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-3">
-        <createTable tableName="complaint_box">
-            <column autoIncrement="true" name="serial_no" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(45)"/>
-            <column name="email" type="VARCHAR(45)"/>
-            <column name="phone_no" type="VARCHAR(45)"/>
-            <column name="complaint" type="VARCHAR(2000)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-4">
-        <createTable tableName="customer">
-            <column autoIncrement="true" name="customerid" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="customername" type="VARCHAR(45)"/>
-            <column name="customerEmail" type="VARCHAR(45)"/>
-            <column name="status" type="INT"/>
-            <column name="createdBy" type="VARCHAR(45)"/>
-            <column name="modifiedTime" type="VARCHAR(45)"/>
-            <column name="modifiedBy" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-5">
-        <createTable tableName="distict">
-            <column autoIncrement="true" name="distict_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="distict_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="population" type="INT"/>
-            <column name="area" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-6">
-        <createTable tableName="employees">
-            <column autoIncrement="true" name="employeeId" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="firstName" type="VARCHAR(45)"/>
-            <column name="lastName" type="VARCHAR(45)"/>
-            <column name="salary" type="DECIMAL(10)"/>
-            <column name="addressId" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-7">
-        <createTable tableName="language">
-            <column autoIncrement="true" name="lang_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="lang_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-8">
-        <createTable tableName="sports">
-            <column defaultValueNumeric="0" name="ID" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="NAME" type="VARCHAR(50)"/>
-            <column name="NUMBER_OF_TEAMS" type="INT"/>
-            <column name="NUMBER_OF_PLAYERS_PER_TEAM" type="INT"/>
-            <column name="TOTAL_NUMBER_OF_PLAYERS" type="INT"/>
-            <column name="STATUS" type="INT"/>
-            <column name="TEAM_ONE" type="VARCHAR(55)"/>
-            <column name="TEAM_TWO" type="VARCHAR(55)"/>
-            <column name="WINNER" type="VARCHAR(55)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-9">
-        <createTable tableName="state">
-            <column autoIncrement="true" name="state_Id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="state_name" type="VARCHAR(255)">
-                <constraints unique="true"/>
-            </column>
-            <column name="region" type="VARCHAR(255)"/>
-            <column name="area" type="DOUBLE">
-                <constraints nullable="false"/>
-            </column>
-            <column name="capital_id" type="INT"/>
-            <column name="formation_date" type="date"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-10">
-        <createTable tableName="state_language">
-            <column autoIncrement="true" name="sl_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="lang_id" type="INT"/>
-            <column name="state_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-11">
-        <createTable tableName="ticket_booking">
-            <column autoIncrement="true" name="orderid" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="iduser" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="train_no" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="train_name" type="VARCHAR(45)"/>
-            <column name="time" type="VARCHAR(50)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-12">
-        <createTable tableName="train_details">
-            <column autoIncrement="true" name="train_no" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="train_name" type="VARCHAR(45)"/>
-            <column name="ss_code" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="es_code" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="bording_time" type="VARCHAR(45)"/>
-            <column name="destination_time" type="VARCHAR(45)"/>
-            <column name="avg_speed" type="VARCHAR(45)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-13">
-        <createTable tableName="train_region">
-            <column name="ss_code" type="INT">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
-            </column>
-            <column name="station_name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-14">
-        <createTable tableName="user">
-            <column autoIncrement="true" name="iduser" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="name" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="VARCHAR(50)">
-                <constraints unique="true"/>
-            </column>
-            <column name="password" type="VARCHAR(45)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-15">
-        <createTable tableName="useraddress">
-            <column autoIncrement="true" name="addressId" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="street" type="VARCHAR(45)"/>
-            <column name="employeeId" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-16">
-        <createTable tableName="village">
-            <column autoIncrement="true" name="village_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="population" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="village_name" type="VARCHAR(255)"/>
-            <column name="zip_id" type="INT"/>
-            <column name="status" type="INT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-17">
-        <createTable tableName="zipcode">
-            <column autoIncrement="true" name="zip_id" type="INT">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="zipcode" type="INT"/>
-            <column name="village_village_id" type="INT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-18">
-        <createIndex indexName="FK326k80w3b7uqj6yu7gvcagrgn" tableName="village">
-            <column name="zip_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-19">
-        <createIndex indexName="FK945gnvikjlcracd3pqnnliih" tableName="zipcode">
-            <column name="village_village_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-20">
-        <createIndex indexName="capital_id_idx" tableName="state">
-            <column name="capital_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-21">
-        <createIndex indexName="distict_id_idx" tableName="city">
-            <column name="distict_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-22">
-        <createIndex indexName="lang_id_idx" tableName="state_language">
-            <column name="lang_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-23">
-        <createIndex indexName="stateId_idx" tableName="distict">
-            <column name="state_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-24">
-        <createIndex indexName="state_id_idx" tableName="state_language">
-            <column name="state_id"/>
-        </createIndex>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-25">
-        <addForeignKeyConstraint baseColumnNames="zip_id" baseTableName="village" constraintName="FK326k80w3b7uqj6yu7gvcagrgn" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="zip_id" referencedTableName="zipcode" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-26">
-        <addForeignKeyConstraint baseColumnNames="village_village_id" baseTableName="zipcode" constraintName="FK945gnvikjlcracd3pqnnliih" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="village_id" referencedTableName="village" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-27">
-        <addForeignKeyConstraint baseColumnNames="capital_id" baseTableName="state" constraintName="capital_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="capital_id" referencedTableName="capital" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-28">
-        <addForeignKeyConstraint baseColumnNames="distict_id" baseTableName="city" constraintName="distict_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="distict_id" referencedTableName="distict" validate="true"/>
-    </changeSet>
-    <changeSet author="siva.thiruveedhi (generated)" id="1687243564912-29">
-        <addForeignKeyConstraint baseColumnNames="state_id" baseTableName="distict" constraintName="state_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="state_Id" referencedTableName="state" validate="true"/>
-    </changeSet>
+
+
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-1">
+		<createTable tableName="address">
+			<column autoIncrement="true" name="addressId" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="street" type="VARCHAR(45)" />
+			<column name="employeeId" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-2">
+		<createTable tableName="capital">
+			<column autoIncrement="true" name="capital_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="capital_name" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-3">
+		<createTable tableName="city">
+			<column autoIncrement="true" name="city_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="city_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="population" type="INT" />
+			<column name="distict_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-4">
+		<createTable tableName="complaint_box">
+			<column autoIncrement="true" name="serial_no" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(45)" />
+			<column name="email" type="VARCHAR(45)" />
+			<column name="phone_no" type="VARCHAR(45)" />
+			<column name="complaint" type="VARCHAR(2000)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-5">
+		<createTable tableName="customer">
+			<column autoIncrement="true" name="customerid" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="customername" type="VARCHAR(45)" />
+			<column name="customerEmail" type="VARCHAR(45)" />
+			<column name="status" type="INT" />
+			<column name="createdBy" type="VARCHAR(45)" />
+			<column name="modifiedTime" type="VARCHAR(45)" />
+			<column name="modifiedBy" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-6">
+		<createTable tableName="distict">
+			<column autoIncrement="true" name="distict_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="distict_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="population" type="INT" />
+			<column name="area" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="state_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-7">
+		<createTable tableName="employees">
+			<column autoIncrement="true" name="employeeId" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="firstName" type="VARCHAR(45)" />
+			<column name="lastName" type="VARCHAR(45)" />
+			<column name="salary" type="DECIMAL(10)" />
+			<column name="addressId" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-8">
+		<createTable tableName="language">
+			<column autoIncrement="true" name="lang_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="lang_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-9">
+		<createTable tableName="state">
+			<column autoIncrement="true" name="state_Id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="state_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="region" type="VARCHAR(255)" />
+			<column name="area" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="capital_id" type="INT" />
+			<column name="formation_date" type="date" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-10">
+		<createTable tableName="state_language">
+			<column autoIncrement="true" name="sl_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="lang_id" type="INT" />
+			<column name="state_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-11">
+		<createTable tableName="ticket_booking">
+			<column autoIncrement="true" name="orderid" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="iduser" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="train_no" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="train_name" type="VARCHAR(45)" />
+			<column name="time" type="VARCHAR(50)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-12">
+		<createTable tableName="train_details">
+			<column autoIncrement="true" name="train_no" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="train_name" type="VARCHAR(45)" />
+			<column name="ss_code" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="es_code" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="bording_time" type="VARCHAR(45)" />
+			<column name="destination_time" type="VARCHAR(45)" />
+			<column name="avg_speed" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-13">
+		<createTable tableName="train_region">
+			<column name="ss_code" type="INT">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="station_name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-14">
+		<createTable tableName="user">
+			<column autoIncrement="true" name="iduser" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="VARCHAR(50)">
+				<constraints unique="true" />
+			</column>
+			<column name="password" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-15">
+		<createTable tableName="village">
+			<column autoIncrement="true" name="village_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="population" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="village_name" type="VARCHAR(255)" />
+			<column name="zip_id" type="INT" />
+			<column name="status" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-16">
+		<createTable tableName="zipcode">
+			<column autoIncrement="true" name="zip_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="zipcode" type="INT" />
+			<column name="village_village_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-17">
+		<createIndex indexName="FK326k80w3b7uqj6yu7gvcagrgn"
+			tableName="village">
+			<column name="zip_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-18">
+		<createIndex indexName="FK945gnvikjlcracd3pqnnliih"
+			tableName="zipcode">
+			<column name="village_village_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-19">
+		<createIndex indexName="capital_id_idx" tableName="state">
+			<column name="capital_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-20">
+		<createIndex indexName="distict_id_idx" tableName="city">
+			<column name="distict_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-21">
+		<createIndex indexName="lang_id_idx"
+			tableName="state_language">
+			<column name="lang_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-22">
+		<createIndex indexName="stateId_idx" tableName="distict">
+			<column name="state_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-23">
+		<createIndex indexName="state_id_idx"
+			tableName="state_language">
+			<column name="state_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-24">
+		<addForeignKeyConstraint
+			baseColumnNames="zip_id" baseTableName="village"
+			constraintName="FK326k80w3b7uqj6yu7gvcagrgn" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="zip_id" referencedTableName="zipcode"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-25">
+		<addForeignKeyConstraint
+			baseColumnNames="village_village_id" baseTableName="zipcode"
+			constraintName="FK945gnvikjlcracd3pqnnliih" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="village_id" referencedTableName="village"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-26">
+		<addForeignKeyConstraint
+			baseColumnNames="capital_id" baseTableName="state"
+			constraintName="capital_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="capital_id" referencedTableName="capital"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-27">
+		<addForeignKeyConstraint
+			baseColumnNames="distict_id" baseTableName="city"
+			constraintName="distict_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="distict_id" referencedTableName="distict"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687174238788-28">
+		<addForeignKeyConstraint
+			baseColumnNames="state_id" baseTableName="distict"
+			constraintName="state_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="state_Id" referencedTableName="state"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-1">
+		<createTable tableName="capital">
+			<column autoIncrement="true" name="capital_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="capital_name" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-2">
+		<createTable tableName="city">
+			<column autoIncrement="true" name="city_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="city_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="population" type="INT" />
+			<column name="distict_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-3">
+		<createTable tableName="complaint_box">
+			<column autoIncrement="true" name="serial_no" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(45)" />
+			<column name="email" type="VARCHAR(45)" />
+			<column name="phone_no" type="VARCHAR(45)" />
+			<column name="complaint" type="VARCHAR(2000)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-4">
+		<createTable tableName="customer">
+			<column autoIncrement="true" name="customerid" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="customername" type="VARCHAR(45)" />
+			<column name="customerEmail" type="VARCHAR(45)" />
+			<column name="status" type="INT" />
+			<column name="createdBy" type="VARCHAR(45)" />
+			<column name="modifiedTime" type="VARCHAR(45)" />
+			<column name="modifiedBy" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-5">
+		<createTable tableName="distict">
+			<column autoIncrement="true" name="distict_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="distict_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="population" type="INT" />
+			<column name="area" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="state_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-6">
+		<createTable tableName="employees">
+			<column autoIncrement="true" name="employeeId" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="firstName" type="VARCHAR(45)" />
+			<column name="lastName" type="VARCHAR(45)" />
+			<column name="salary" type="DECIMAL(10)" />
+			<column name="addressId" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-7">
+		<createTable tableName="language">
+			<column autoIncrement="true" name="lang_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="lang_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-8">
+		<createTable tableName="sports">
+			<column name="id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(50)" />
+			<column name="number_of_teams" type="INT" />
+			<column name="number_of_players_per_team" type="INT" />
+			<column name="total_number_of_players" type="INT" />
+			<column name="status" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-9">
+		<createTable tableName="state">
+			<column autoIncrement="true" name="state_Id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="state_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="region" type="VARCHAR(255)" />
+			<column name="area" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="capital_id" type="INT" />
+			<column name="formation_date" type="date" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-10">
+		<createTable tableName="state_language">
+			<column autoIncrement="true" name="sl_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="lang_id" type="INT" />
+			<column name="state_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-11">
+		<createTable tableName="ticket_booking">
+			<column autoIncrement="true" name="orderid" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="iduser" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="train_no" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="train_name" type="VARCHAR(45)" />
+			<column name="time" type="VARCHAR(50)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-12">
+		<createTable tableName="train_details">
+			<column autoIncrement="true" name="train_no" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="train_name" type="VARCHAR(45)" />
+			<column name="ss_code" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="es_code" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="bording_time" type="VARCHAR(45)" />
+			<column name="destination_time" type="VARCHAR(45)" />
+			<column name="avg_speed" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-13">
+		<createTable tableName="train_region">
+			<column name="ss_code" type="INT">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="station_name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-14">
+		<createTable tableName="user">
+			<column autoIncrement="true" name="iduser" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="VARCHAR(50)">
+				<constraints unique="true" />
+			</column>
+			<column name="password" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-15">
+		<createTable tableName="useraddress">
+			<column autoIncrement="true" name="addressId" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="street" type="VARCHAR(45)" />
+			<column name="employeeId" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-16">
+		<createTable tableName="village">
+			<column autoIncrement="true" name="village_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="population" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="village_name" type="VARCHAR(255)" />
+			<column name="zip_id" type="INT" />
+			<column name="status" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-17">
+		<createTable tableName="zipcode">
+			<column autoIncrement="true" name="zip_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="zipcode" type="INT" />
+			<column name="village_village_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-18">
+		<createIndex indexName="FK326k80w3b7uqj6yu7gvcagrgn"
+			tableName="village">
+			<column name="zip_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-19">
+		<createIndex indexName="FK945gnvikjlcracd3pqnnliih"
+			tableName="zipcode">
+			<column name="village_village_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-20">
+		<createIndex indexName="capital_id_idx" tableName="state">
+			<column name="capital_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-21">
+		<createIndex indexName="distict_id_idx" tableName="city">
+			<column name="distict_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-22">
+		<createIndex indexName="lang_id_idx"
+			tableName="state_language">
+			<column name="lang_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-23">
+		<createIndex indexName="stateId_idx" tableName="distict">
+			<column name="state_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-24">
+		<createIndex indexName="state_id_idx"
+			tableName="state_language">
+			<column name="state_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-25">
+		<addForeignKeyConstraint
+			baseColumnNames="zip_id" baseTableName="village"
+			constraintName="FK326k80w3b7uqj6yu7gvcagrgn" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="zip_id" referencedTableName="zipcode"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-26">
+		<addForeignKeyConstraint
+			baseColumnNames="village_village_id" baseTableName="zipcode"
+			constraintName="FK945gnvikjlcracd3pqnnliih" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="village_id" referencedTableName="village"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-27">
+		<addForeignKeyConstraint
+			baseColumnNames="capital_id" baseTableName="state"
+			constraintName="capital_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="capital_id" referencedTableName="capital"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-28">
+		<addForeignKeyConstraint
+			baseColumnNames="distict_id" baseTableName="city"
+			constraintName="distict_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="distict_id" referencedTableName="distict"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687179038239-29">
+		<addForeignKeyConstraint
+			baseColumnNames="state_id" baseTableName="distict"
+			constraintName="state_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="state_Id" referencedTableName="state"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-1">
+		<createTable tableName="capital">
+			<column autoIncrement="true" name="capital_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="capital_name" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-2">
+		<createTable tableName="city">
+			<column autoIncrement="true" name="city_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="city_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="population" type="INT" />
+			<column name="distict_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-3">
+		<createTable tableName="complaint_box">
+			<column autoIncrement="true" name="serial_no" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(45)" />
+			<column name="email" type="VARCHAR(45)" />
+			<column name="phone_no" type="VARCHAR(45)" />
+			<column name="complaint" type="VARCHAR(2000)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-4">
+		<createTable tableName="customer">
+			<column autoIncrement="true" name="customerid" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="customername" type="VARCHAR(45)" />
+			<column name="customerEmail" type="VARCHAR(45)" />
+			<column name="status" type="INT" />
+			<column name="createdBy" type="VARCHAR(45)" />
+			<column name="modifiedTime" type="VARCHAR(45)" />
+			<column name="modifiedBy" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-5">
+		<createTable tableName="distict">
+			<column autoIncrement="true" name="distict_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="distict_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="population" type="INT" />
+			<column name="area" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="state_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-6">
+		<createTable tableName="employees">
+			<column autoIncrement="true" name="employeeId" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="firstName" type="VARCHAR(45)" />
+			<column name="lastName" type="VARCHAR(45)" />
+			<column name="salary" type="DECIMAL(10)" />
+			<column name="addressId" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-7">
+		<createTable tableName="language">
+			<column autoIncrement="true" name="lang_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="lang_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-8">
+		<createTable tableName="sports">
+			<column defaultValueNumeric="0" name="ID" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="NAME" type="VARCHAR(50)" />
+			<column name="NUMBER_OF_TEAMS" type="INT" />
+			<column name="NUMBER_OF_PLAYERS_PER_TEAM" type="INT" />
+			<column name="TOTAL_NUMBER_OF_PLAYERS" type="INT" />
+			<column name="STATUS" type="INT" />
+			<column name="TEAM_ONE" type="VARCHAR(55)" />
+			<column name="TEAM_TWO" type="VARCHAR(55)" />
+			<column name="WINNER" type="VARCHAR(55)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-9">
+		<createTable tableName="state">
+			<column autoIncrement="true" name="state_Id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="state_name" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="region" type="VARCHAR(255)" />
+			<column name="area" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+			<column name="capital_id" type="INT" />
+			<column name="formation_date" type="date" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-10">
+		<createTable tableName="state_language">
+			<column autoIncrement="true" name="sl_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="lang_id" type="INT" />
+			<column name="state_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-11">
+		<createTable tableName="ticket_booking">
+			<column autoIncrement="true" name="orderid" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="iduser" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="train_no" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="train_name" type="VARCHAR(45)" />
+			<column name="time" type="VARCHAR(50)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-12">
+		<createTable tableName="train_details">
+			<column autoIncrement="true" name="train_no" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="train_name" type="VARCHAR(45)" />
+			<column name="ss_code" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="es_code" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="bording_time" type="VARCHAR(45)" />
+			<column name="destination_time" type="VARCHAR(45)" />
+			<column name="avg_speed" type="VARCHAR(45)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-13">
+		<createTable tableName="train_region">
+			<column name="ss_code" type="INT">
+				<constraints nullable="false" primaryKey="true"
+					unique="true" />
+			</column>
+			<column name="station_name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-14">
+		<createTable tableName="user">
+			<column autoIncrement="true" name="iduser" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="VARCHAR(50)">
+				<constraints unique="true" />
+			</column>
+			<column name="password" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-15">
+		<createTable tableName="useraddress">
+			<column autoIncrement="true" name="addressId" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="street" type="VARCHAR(45)" />
+			<column name="employeeId" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-16">
+		<createTable tableName="village">
+			<column autoIncrement="true" name="village_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="population" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="village_name" type="VARCHAR(255)" />
+			<column name="zip_id" type="INT" />
+			<column name="status" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-17">
+		<createTable tableName="zipcode">
+			<column autoIncrement="true" name="zip_id" type="INT">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="zipcode" type="INT" />
+			<column name="village_village_id" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-18">
+		<createIndex indexName="FK326k80w3b7uqj6yu7gvcagrgn"
+			tableName="village">
+			<column name="zip_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-19">
+		<createIndex indexName="FK945gnvikjlcracd3pqnnliih"
+			tableName="zipcode">
+			<column name="village_village_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-20">
+		<createIndex indexName="capital_id_idx" tableName="state">
+			<column name="capital_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-21">
+		<createIndex indexName="distict_id_idx" tableName="city">
+			<column name="distict_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-22">
+		<createIndex indexName="lang_id_idx"
+			tableName="state_language">
+			<column name="lang_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-23">
+		<createIndex indexName="stateId_idx" tableName="distict">
+			<column name="state_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-24">
+		<createIndex indexName="state_id_idx"
+			tableName="state_language">
+			<column name="state_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-25">
+		<addForeignKeyConstraint
+			baseColumnNames="zip_id" baseTableName="village"
+			constraintName="FK326k80w3b7uqj6yu7gvcagrgn" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="zip_id" referencedTableName="zipcode"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-26">
+		<addForeignKeyConstraint
+			baseColumnNames="village_village_id" baseTableName="zipcode"
+			constraintName="FK945gnvikjlcracd3pqnnliih" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="village_id" referencedTableName="village"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-27">
+		<addForeignKeyConstraint
+			baseColumnNames="capital_id" baseTableName="state"
+			constraintName="capital_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="capital_id" referencedTableName="capital"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-28">
+		<addForeignKeyConstraint
+			baseColumnNames="distict_id" baseTableName="city"
+			constraintName="distict_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="distict_id" referencedTableName="distict"
+			validate="true" />
+	</changeSet>
+	<changeSet author="siva.thiruveedhi (generated)"
+		id="1687243564912-29">
+		<addForeignKeyConstraint
+			baseColumnNames="state_id" baseTableName="distict"
+			constraintName="state_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="state_Id" referencedTableName="state"
+			validate="true" />
+	</changeSet>
 </databaseChangeLog>
