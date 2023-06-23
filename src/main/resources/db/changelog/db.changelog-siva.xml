@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="siva" id="1">
+  		<renameTable oldTableName="address" newTableName="user_address"/>
+	</changeSet>
+    
+    <changeSet author="siva" id="2">
+  		<renameTable oldTableName="user_address" newTableName="userAddress"/>
+	</changeSet>
+	
+	<changeSet id="20230619-1" author="siva">
+        <createTable tableName="sports">
+            <column name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="number_of_teams" type="INT"/>
+            <column name="number_of_players_per_team" type="INT"/>
+            <column name="total_number_of_players" type="INT"/>
+            <column name="status" type="INT"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="sivakrishna" id="20230619-2">  
+		<addAutoIncrement  
+			columnDataType="INT"
+			columnName="id" 
+			defaultOnNull="false"
+			generationType="ALWAYS"
+			incrementBy="1" 
+			schemaName="siva_krishna" 
+			startWith="1001"  
+			tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet id="20230619-3" author="sivakrishna">
+        <insert tableName="sports">
+            <column name="name" value="cricket"/>
+            <column name="number_of_players_per_team" value="11"/>
+            <column name="number_of_teams" value="2"/>
+            <column name="total_number_of_players" value="22"/>
+            <column name="status" value="1"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet id="20230620-4" author="sivakrishna">
+        <insert tableName="sports">
+            <column name="name" value="volley ball"/>
+            <column name="number_of_players_per_team" value="6"/>
+            <column name="number_of_teams" value="2"/>
+            <column name="total_number_of_players" value="12"/>
+            <column name="status" value="1"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet id="20230620-5" author="sivakrishna">
+        <insert tableName="sports">
+            <column name="name" value="Table tennis"/>
+            <column name="number_of_players_per_team" value="2"/>
+            <column name="number_of_teams" value="2"/>
+            <column name="total_number_of_players" value="4"/>
+            <column name="status" value="1"/>
+        </insert>
+    </changeSet>
+	
+	<changeSet  author="sivakrishna"  id="20230620-6">  
+    <renameColumn
+            columnDataType="INT"
+            newColumnName="ID"  
+            oldColumnName="id"  
+            schemaName="siva_krishna"  
+            tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet  author="sivakrishna"  id="20230620-7">  
+    <renameColumn
+            columnDataType="VARCHAR(50)"  
+            newColumnName="NAME"  
+            oldColumnName="name"  
+            schemaName="siva_krishna"  
+            tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet  author="sivakrishna"  id="20230620-8">  
+    <renameColumn
+            columnDataType="INT"  
+            newColumnName="NUMBER_OF_PLAYERS_PER_TEAM"  
+            oldColumnName="number_of_players_per_team"  
+            schemaName="siva_krishna"  
+            tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet  author="sivakrishna"  id="20230620-9">  
+    <renameColumn
+            columnDataType="INT"  
+            newColumnName="NUMBER_OF_TEAMS"  
+            oldColumnName="number_of_teams"  
+            schemaName="siva_krishna"  
+            tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet  author="sivakrishna"  id="20230620-10">  
+    <renameColumn
+            columnDataType="INT"  
+            newColumnName="TOTAL_NUMBER_OF_PLAYERS"  
+            oldColumnName="total_number_of_players"  
+            schemaName="siva_krishna"  
+            tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet  author="sivakrishna"  id="20230620-11">  
+    <renameColumn
+            columnDataType="INT"  
+            newColumnName="STATUS"  
+            oldColumnName="status"  
+            schemaName="siva_krishna"  
+            tableName="sports"/>  
+	</changeSet>
+	
+	<changeSet author="sivakrishna" id="20230620-12"> 
+	    <addColumn
+	        schemaName= "siva_krishna"
+	        tableName="sports">
+	        <column 
+	        	name="TEAM_ONE" 
+	            type="varchar(55)"/>  
+	        <column 
+	        	afterColumn="TEAM_ONE" 
+	            name="TEAM_TWO"  
+	            type="varchar(55)"/>
+	        <column 
+	        	afterColumn="TEAM_TWO" 
+	            name="WINNER"  
+	            type="varchar(55)"/>
+	    </addColumn>
+	</changeSet>
+	
+	<!-- CHANGE SET FOR UPDATING THE COLUMNS VALUES -->
+	<changeSet id="20230623-13" author="sivakrishna">
+		<update tableName="sports" schemaName="siva_krishna">
+			<column name="TEAM_ONE" value="india"/>
+        	<column name="TEAM_TWO" value="england"/>
+			<column name="WINNER" value="india"/>
+        	<where>ID = 1001</where>
+		</update>
+		<update tableName="sports" schemaName="siva_krishna">
+			<column name="TEAM_ONE" value="india"/>
+        	<column name="TEAM_TWO" value="spain"/>
+			<column name="WINNER" value="india"/>
+        	<where>ID = 1002</where>
+		</update>
+		<update tableName="sports" schemaName="siva_krishna">
+			<column name="TEAM_ONE" value="india"/>
+        	<column name="TEAM_TWO" value="cuba"/>
+			<column name="WINNER" value="india"/>
+        	<where>ID = 1003</where>
+		</update>
+	</changeSet>
+	
+	<!-- CHANGE SET FOR DELETING THE ROW OF THE TABLE -->
+	<changeSet id="20230620-14" author="sivakrishna">
+        <delete tableName="sports" schemaName="siva_krishna">
+        	<where>ID = 1004</where>
+        </delete>
+    </changeSet>
+    
+    <!-- CHANGE SET FOR MODIFYING THE DATATYPES OF THE EXISTING COLUMNS -->
+    <changeSet id="20230620-15" author="sivakrishna">
+    	<modifyDataType tableName="sports" columnName="TEAM_ONE" newDataType="VARCHAR(40)" schemaName="siva_krishna"/>
+    	<modifyDataType tableName="sports" columnName="TEAM_TWO" newDataType="VARCHAR(40)" schemaName="siva_krishna"/>
+    	<modifyDataType tableName="sports" columnName="WINNER" newDataType="VARCHAR(40)" schemaName="siva_krishna"/>
+    </changeSet>
+    
+    <!-- CHANGE SET FOR LOADING THE DATA FROM THE CSV FILE -->
+    <!-- <changeSet author="sivakrishna" id="20230620-16">
+	    <loadData  	file="loaddata.csv"
+		            schemaName="siva_krishna"
+	            	separator=";"
+	            	tableName="sports" >
+		    <column header="NAME" name="NAME" type="VARCHAR(50)"/>
+	      	<column	header="NUMBER_OF_TEAMS" name="NUMBER_OF_TEAMS" type="INT"/>
+	        <column	header="NUMBER_OF_PLAYERS_PER_TEAM" name="NUMBER_OF_PLAYERS_PER_TEAM" type="INT"/>
+			<column	header="TOTAL_NUMBER_OF_PLAYERS" name="TOTAL_NUMBER_OF_PLAYERS" type="INT"/>
+			<column	header="STATUS" name="STATUS" type="INT"/>
+			<column	header="TEAM_ONE" name="TEAM_ONE" type="VARCHAR(40)"/>
+			<column	header="TEAM_TWO" name="TEAM_TWO" type="VARCHAR(40)"/>
+	        <column	header="WINNER" name="WINNER" type="VARCHAR(40)"/>
+        </loadData>
+	</changeSet> -->
+    
+    <!-- CHANGE SET FOR CREATING A VIEW OF TABLE GAMES -->
+    <changeSet author="sivakrishna" id="20230620-17">  
+	    <createView schemaName="siva_krishna" viewName="view_sports">
+	    		select ID,NAME from sports where ID > 1006
+	    </createView>  
+	</changeSet>
+    
+    <!-- CHANGE SET FOR INSERTING A NEW RECORD -->
+     <changeSet id="20230620-18" author="sivakrishna">
+        <insert tableName="sports">
+            <column name="NAME" value="Badminton"/>
+            <column name="NUMBER_OF_PLAYERS_PER_TEAM" value="2"/>
+            <column name="NUMBER_OF_TEAMS" value="2"/>
+            <column name="TOTAL_NUMBER_OF_PLAYERS" value="4"/>
+            <column name="STATUS" value="1"/>
+            <column	name="TEAM_ONE" value="india"/>
+			<column	name="TEAM_TWO" value="banglagesh"/>
+	        <column	name="WINNER" value="india"/>
+        </insert>
+    </changeSet>
+    
+    <!-- CHANGE SET FOR AUTO-INCRIMENTFOR THE TABLE SPORTS -->
+    <changeSet author="sivakrishna" id="20230620-19">  
+		<addAutoIncrement  
+			columnDataType="INT"
+			columnName="id" 
+			defaultOnNull="false"
+			generationType="ALWAYS"
+			incrementBy="1" 
+			schemaName="siva_krishna" 
+			startWith="1010"  
+			tableName="sports"/>  
+	</changeSet>
+	
+	<!-- CHANGESET FOR CREATING INDEX -->
+	<changeSet author="sivakrishna" id="20230620-20">  
+	    <createIndex indexName="indian_sports"
+	            schemaName="siva_krishna"
+	            tableName="sports"> 
+	        <column name="ID"/>
+	        <column name="NAME"/>
+	        <column name="STATUS"/> 
+	    </createIndex>  
+	    <createIndex indexName="american_sports"
+	            schemaName="siva_krishna"
+	            tableName="sports"> 
+	        <column name="ID"/>
+	        <column name="NAME"/>
+	        <column name="STATUS"/>
+	    </createIndex>  
+	</changeSet>
+	
+	<!-- CHANGESET FOR DROPING AN INDEX FROM THE TABLE-->
+	<changeSet author="sivakrishna" id="20230620-21">
+	    <dropIndex indexName="american_sports"
+	            schemaName="siva_krishna"
+	            tableName="sports"/>  
+	</changeSet>
+	
+	<!-- CHANGE SET FOR ADDING UNIQUE CONSTRAINT TO THE COLUMN -->
+	<changeSet  author="sivakrishna"  id="20230620-22">  
+	    <addUniqueConstraint    
+	            columnNames="NAME"
+	            schemaName="siva_krishna"
+	            tableName="sports"/>
+	</changeSet>
+	
+	<!-- CHANGESET FOR ADDING THE CHECK CONSTRAINT TO THE COLUMN -->
+	<changeSet id="20230620-24" author="sivakrishna" >
+		  <sql>
+		  		ALTER  TABLE  siva_krishna.sports  ADD  CONSTRAINT  TOTAL_NUMBER_OF_PLAYERS  CHECK  (TOTAL_NUMBER_OF_PLAYERS BETWEEN 1 AND 100);
+		  </sql>
+	</changeSet>
+	
+	<!-- CHANGESET FOR RENAMING THE TABLE -->
+	<changeSet  author="sivakrishna"  id="20230620-25">  
+	    <renameTable
+	            newTableName="games"  
+	            oldTableName="sports"  
+	            schemaName="siva_krishna"/>  
+	</changeSet>
+	
+	<!-- CHANGE SET FOR CREATING A VIEW OF TABLE GAMES -->
+    <changeSet author="sivakrishna" id="20230620-26">  
+	    <createView schemaName="siva_krishna" viewName="view_games">
+	    		select ID,NAME from games where ID > 1006
+	    </createView>  
+	</changeSet>
+
+	 <!-- CHANGE SET FOR LOADING THE UPDATED DATA FROM THE CSV FILE -->
+    <changeSet author="sivakrishna" id="20230620-27">
+	    <loadUpdateData	file="loadupdate.csv"
+		            schemaName="siva_krishna"
+	            	separator=","
+	            	tableName="games"
+	            	primaryKey="ID" 
+	            	onlyUpdate="true">
+	        <column header="ID" name="ID" type="INT"/>
+		    <column header="NAME" name="NAME" type="VARCHAR(50)"/>
+	      	<column	header="NUMBER_OF_TEAMS" name="NUMBER_OF_TEAMS" type="INT"/>
+	        <column	header="NUMBER_OF_PLAYERS_PER_TEAM" name="NUMBER_OF_PLAYERS_PER_TEAM" type="INT"/>
+			<column	header="TOTAL_NUMBER_OF_PLAYERS" name="TOTAL_NUMBER_OF_PLAYERS" type="INT"/>
+			<column	header="STATUS" name="STATUS" type="INT"/>
+			<column	header="TEAM_ONE" name="TEAM_ONE" type="VARCHAR(40)"/>
+			<column	header="TEAM_TWO" name="TEAM_TWO" type="VARCHAR(40)"/>
+	        <column	header="WINNER" name="WINNER" type="VARCHAR(40)"/>
+        </loadUpdateData>
+	</changeSet>
+	
+	<!-- CHANGESET FOR DROPING THE UNIQUE CONSTRAINT -->
+	<changeSet  author="sivakrishna"  id="20230620-28">  
+	    <dropUniqueConstraint    
+	            constraintName="NAME"
+	            schemaName="siva_krishna"  
+	            tableName="games"  
+	            uniqueColumns="NAME"/>  
+	</changeSet>
+	
+	<!-- CHANGESET FOR ADDING THE FORIEGN KEY -->	
+	<changeSet  author="sivakrishna"  id="20230620-29">  
+	    <addForeignKeyConstraint  baseColumnNames="iduser"
+	            baseTableName="ticket_booking"  
+	            baseTableSchemaName="siva_krishna"  
+	            constraintName="fk_ticket_booking_user"  
+	            onDelete="CASCADE"  
+	            onUpdate="RESTRICT"  
+	            referencedColumnNames="iduser"
+	            referencedTableName="user"
+	            referencedTableSchemaName="siva_krishna" />
+	</changeSet>
+		
+	
+	<changeSet id="20230621-30" author="sivakrishna">
+        <createTable tableName="customer">
+            <column name="ID" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="FIRSTNAME" type="VARCHAR(60)"/>
+            <column name="LASTNAME" type="VARCHAR(60)"/>
+            <column name="EMAIL" type="VARCHAR(60)"/>
+            <column name="GENDER" type="VARCHAR(60)"/>
+            <column name="CONTACTNO" type="VARCHAR(60)"/>
+            <column name="COUNTRY" type="VARCHAR(60)"/>
+            <column name="DOB" type="VARCHAR(60)"/>
+        </createTable>
+    </changeSet>
+		
+		
+</databaseChangeLog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

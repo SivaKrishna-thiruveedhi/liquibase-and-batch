@@ -1,0 +1,6 @@
+ID,NAME,NUMBER_OF_TEAMS,NUMBER_OF_PLAYERS_PER_TEAM,TOTAL_NUMBER_OF_PLAYERS,STATUS,TEAM_ONE,TEAM_TWO,WINNER
+1004,pubg,2,4,8,1,blue,red,blue
+1005,chess,2,1,2,1,red,blue,red
+1006,carroms,2,2,4,1,red,blue,blue
+1007,football,2,11,22,1,spain,brazil,brazil
+1008,ludo,2,1,2,1,green,blue,green
